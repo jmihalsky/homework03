@@ -20,10 +20,46 @@
             <div id="msg" class="col-xs-12 col-s-12 col-md-12"></div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-s-12 col-md-6"></div>
+            <div class="col-xs-6 col-s-6 col-md-6">
+                <div>Wins:</div>
+                <div>Losses:</div>
+                <div>Guesses Left:</div>
+                <div>Your guesses so far:</div>
+            </div>
+            <div class="col-xs-6 col-s-6 col-md-6">
+                <div id="wins"></div>
+                <div id="losses"></div>
+                <div id="guesses_left"></div>
+                <div id="gueses"></div>
+            </div>
+            
         </div>
     </div>
     <footer></footer>
-    
+    <script type="text/javascript">
+    var start_game = 0;
+   
+
+    console.log(start_game);
+    document.getElementById("msg").innerHTML = "Hit the 's' key to start.";
+    document.onkeyup = function(event) {
+        var start_key = event.key;
+        var val_key = event.keyCode;
+        console.log(start_key);
+        if (start_key === 's' && start_game == 0){
+            start_game = 1;
+            cmp_sel();
+            document.getElementById("msg").innerHTML = "Hit a letter key to guess the letter."
+            console.log(cmp_sel());
+        }
+        else
+        {
+            if(start_game == 1)
+            {
+                console.log(val_key)
+            }
+        }
+    };
+    </script>
 </body>
 </html>
