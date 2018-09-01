@@ -17,15 +17,17 @@ function key_val(){
         if(start_key != ltr_cmp)
         {
             guesses--;
+            psychic_guesses = psychic_guesses + start_key + " ";
+            document.getElementById("guesses_ltr").innerHTML = psychic_guesses;
+            document.getElementById("guesses_left").innerHTML = guesses;
+
             if (guesses == 0){
                 psy_loss();
             }
             else
             {
-                document.getElementById("guesses_left").innerHTML = guesses;
-                psychic_guesses = start_key + " ";
-                document.getElementById("guesses").innerHTML = psychic_guesses;
-                document.getElementById("msg").innerHTML = "You're guess was not correct, try again."
+                
+                document.getElementById("msg").innerHTML = "You're guess was not correct, try again.";
             }
         }
         else
@@ -35,7 +37,7 @@ function key_val(){
     }
     else
     {
-        document.getElementById("msg").innerHTML = "You need to select a letter!";
+        return document.getElementById("msg").innerHTML = "You need to select a letter!";
     }
 }
 
@@ -46,4 +48,6 @@ function psy_loss(){
     document.getElementById("losses").innerHTML = psychic_losses;
     cmp_sel();
     document.getElementById("guesses_left").innerHTML = guesses;
+    psychic_guesses = "";
+    document.getElementById("guesses_ltr").innerHTML = psychic_guesses;
 }

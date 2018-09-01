@@ -30,7 +30,7 @@
                 <div id="wins"></div>
                 <div id="losses"></div>
                 <div id="guesses_left"></div>
-                <div id="gueses"></div>
+                <div id="guesses_ltr"></div>
             </div>
             
         </div>
@@ -38,13 +38,14 @@
     <footer></footer>
     <script type="text/javascript">
     var start_game = 0;
-   
+    var start_key = "";
+    var val_key = "";
 
     console.log(start_game);
     document.getElementById("msg").innerHTML = "Hit the 's' key to start.";
     document.onkeyup = function(event) {
-        var start_key = event.key;
-        var val_key = event.keyCode;
+        start_key = event.key;
+        val_key = event.keyCode;
         console.log(start_key);
         if (start_key === 's' && start_game == 0){
             start_game = 1;
@@ -59,8 +60,8 @@
         {
             if(start_game == 1)
             {
-                console.log(val_key)
-                key_val(val_key,start_key);
+                console.log(val_key);
+                key_val();
             }
         }
     };
