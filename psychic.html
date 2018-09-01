@@ -49,14 +49,18 @@
         if (start_key === 's' && start_game == 0){
             start_game = 1;
             cmp_sel();
-            document.getElementById("msg").innerHTML = "Hit a letter key to guess the letter."
+            document.getElementById("msg").innerHTML = "Hit a letter key to guess the letter.";
             console.log(cmp_sel());
+            document.getElementById("wins").innerHTML = psychic_wins;
+            document.getElementById("losses").innerHTML = psychic_losses;
+            document.getElementById("guesses_left").innerHTML = guesses;
         }
         else
         {
             if(start_game == 1)
             {
                 console.log(val_key)
+                key_val(val_key,start_key);
             }
         }
     };
