@@ -32,7 +32,7 @@ function key_val(){
         }
         else
         {
-
+            psy_win();
         }
     }
     else
@@ -46,6 +46,17 @@ function psy_loss(){
     guesses = 10;
     document.getElementById("msg").innerHTML = "You lose. I have another number for you to guess, try again.";
     document.getElementById("losses").innerHTML = psychic_losses;
+    cmp_sel();
+    document.getElementById("guesses_left").innerHTML = guesses;
+    psychic_guesses = "";
+    document.getElementById("guesses_ltr").innerHTML = psychic_guesses;
+}
+
+function psy_win(){
+    psychic_wins++;
+    guesses = 10;
+    document.getElementById("msg").innerHTML = "You Win!!!!! Test your luck and see if you can guess my new letter.";
+    document.getElementById("wins").innerHTML = psychic_wins;
     cmp_sel();
     document.getElementById("guesses_left").innerHTML = guesses;
     psychic_guesses = "";

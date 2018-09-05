@@ -1,0 +1,8 @@
+body{
+    @import url('https://fonts.googleapis.com/css?family=Aladin');
+    font-family: 'Aladin', cursive;
+}
+
+#msg{
+    text-align: center;
+}
