@@ -62,3 +62,12 @@ function psy_win(){
     psychic_guesses = "";
     document.getElementById("guesses_ltr").innerHTML = psychic_guesses;
 }
+
+var hangman_word = ['PITTSBURGH','SACRAMENTO','SEATTLE','LOS ANGLES','CHICAGO','AUSTIN','PHOENIX','RENO','OAKLAND','SAN FRANCISCO'];
+var word_cmp = "";
+
+function cmp_wrd_sel(){
+    var cmp_rnd = Math.floor((Math.random()* hangman_word.length)+ 1);
+    word_cmp = hangman_word[cmp_rnd];
+    return word_cmp;
+}

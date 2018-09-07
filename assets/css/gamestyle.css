@@ -5,4 +5,17 @@ body{
 
 #msg{
     text-align: center;
+    padding-top: 85px;
+}
+
+.crystal_wrapper{
+    background: url("../images/crystalball.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 300px;
+}
+
+table{
+    width: 600px;
+    font-size: 25px;
 }
