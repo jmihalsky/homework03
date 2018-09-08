@@ -92,8 +92,8 @@ for (var i = 0; i < ltr_cnt; i++){
     if (wrd == " ")
     {
         word_arry.push(wrd);
-        guess_arry.push(wrd);
-        word_string = word_string + wrd;
+        guess_arry.push("&nbsp&nbsp");
+        word_string = word_string + "&nbsp&nbsp";
     }
     else
     {
@@ -119,6 +119,7 @@ function word_start(){
     word_space();
     document.getElementById("word_msg").innerHTML = "Select a letter for the word.";
     document.getElementById("man").innerHTML = hangman_img[missed_guess];
+    console.log(word_string);
     document.getElementById("letters").innerHTML = word_string;
     document.getElementById("letter_guesses").innerHTML = missed_ltr;
     console.log(word_arry);
