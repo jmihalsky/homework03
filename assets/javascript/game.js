@@ -120,6 +120,7 @@ function word_start(){
     document.getElementById("word_msg").innerHTML = "Select a letter for the word.";
     document.getElementById("man").innerHTML = hangman_img[missed_guess];
     document.getElementById("letters").innerHTML = word_string;
+    document.getElementById("letter_guesses").innerHTML = missed_ltr;
     console.log(word_arry);
     console.log(guess_arry);
     console.log(word_ltrs);
@@ -169,8 +170,8 @@ function game_chk(){
     if(missed_guess == 6){
         hang_losses++;
         document.getElementById("losses").innerHTML = hang_losses;
-        document.getElementById("word_msg").innerHTML = "You Lose. Hit the Space Bar to try again.";
-        hang_start = 0;
+        document.getElementById("word_msg").innerHTML = "You Lose. :-(";
+        word_start();
     }
     else
     {
@@ -178,8 +179,8 @@ function game_chk(){
         {
             hang_wins++;
             document.getElementById("wins").innerHTML = hang_wins;
-            document.getElementById("word_msg").innerHTML = "You Win!!! Hit the Space Bar to try again.";
-            hang_start = 0;
+            document.getElementById("word_msg").innerHTML = "You Win!!!";
+            word_start();
         }
     }
 }

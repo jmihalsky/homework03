@@ -1,3 +1,24 @@
+body{
+    font-family: 'Coming Soon', cursive;
+    font-size: 20pt;
+    background: url("../images/d2f210eebb4ddfc22fbc7bd747adc78b.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 100;
+}
+
+/* .container{
+    background: url("../images/d2f210eebb4ddfc22fbc7bd747adc78b.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 100;
+} */
+
 #man{
     height: 350px;
+    align-items: center;
+}
+
+#word_msg, #letter_guesses, #letters{
+    text-align: center;
 }
