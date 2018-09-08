@@ -17,9 +17,62 @@
 <header></header>
 <div class="container">
     <div class="row">
-        
+        <div id="word_msg" class="col-xs-12 col-s-12 col-md-12"></div>
+    </div>
+    <div class="row">
+        <div id="man" class="col-xs-12 col-s-12 col-md-12"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div id="letters" class="col-xs-12 col-s-12 col-md-6"></div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div id="letter_guesses" class="col-xs-12 col-s-12 col-md-6"></div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-xs-12 col-s-12 col-md-12">
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <th>Wins:</th>
+                        <td id="wins"></td>
+                    </tr>
+                    <tr>
+                        <th>Losses:</th>
+                        <td id="losses"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-<footer></footer>    
+<footer></footer>  
+<script>
+
+    var hang_start = 0;
+    var usr_keycode = 0;
+    var usr_key = "";
+
+    document.getElementById("word_msg").innerHTML = "Hit the Space Bar to start the game.";
+    document.onkeyup = function(event){
+        usr_keycode = event.keyCode;
+        console.log(usr_keycode);
+        usr_key = event.key;
+        console.log(usr_key);
+        if ( usr_keycode == 32 && hang_start === 0)
+        {
+            hang_start = 1;
+            word_start();
+        }
+        else
+        {
+            letter_check();
+        }
+    };
+</script>  
 </body>
 </html>
