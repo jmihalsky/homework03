@@ -66,8 +66,8 @@ function psy_win(){
 }
 
 // code for the hangman game below
-
-var hangman_word = ['PITTSBURGH','SACRAMENTO','SEATTLE','LOS ANGLES','CHICAGO','AUSTIN','PHOENIX','RENO','OAKLAND','SAN FRANCISCO'];
+//  Global variables
+var hangman_word = ['PITTSBURGH','SACRAMENTO','SEATTLE','LOS ANGLES','CHICAGO','AUSTIN','PHOENIX','RENO','OAKLAND','SAN FRANCISCO','BALTIMORE','SALT LAKE CITY','ALBUQUERQUE','DENVER','HOUSTON','ATLANTA','NEW YORK CITY','BOSTON','MINNEAPOLIS'];
 var hangman_img = ["<img src='assets/images/Hangman01.png'>","<img src='assets/images/Hangman02.png'>","<img src='assets/images/Hangman03.png'>","<img src='assets/images/Hangman04.png'>","<img src='assets/images/Hangman05.png'>","<img src='assets/images/Hangman06.png'>","<img src='assets/images/Hangman07.png'>"];
 var word_cmp = "";
 var word_string = "";
@@ -75,15 +75,18 @@ var word_arry = [];
 var guess_arry = [];
 var word_ltrs = 0;
 var missed_guess = 0;
-var missed_ltr = "";
+var missed_ltr = [];
 var hang_losses = 0;
 var hang_wins = 0;
 
+// Randomly select a city from the hangman word array
 function cmp_wrd_sel(){
     var cmp_rnd = Math.floor((Math.random()* hangman_word.length)+ 1);
     word_cmp = hangman_word[cmp_rnd];
     return word_cmp;
 }
+
+// Take the random city and figure out the number of letters, spaces, etc and place in arrays for showing the number of letters and validation later
 
 function word_space(){
 var ltr_cnt = word_cmp.length;
@@ -112,20 +115,22 @@ function word_start(){
     guess_arry = [];
     word_ltrs = 0;
     missed_guess = 0;
-    missed_ltr = "";
-    console.log(word_cmp);
+    missed_ltr = [];
     cmp_wrd_sel();
-    console.log(word_cmp);
     word_space();
-    document.getElementById("word_msg").innerHTML = "Select a letter for the word.";
+    if (hang_start = 0){
+    document.getElementById("word_msg").innerHTML = "Select a letter for the word wich is a City.";
+    }
     document.getElementById("man").innerHTML = hangman_img[missed_guess];
-    console.log(word_string);
+    // console.log(word_string);
     document.getElementById("letters").innerHTML = word_string;
     document.getElementById("letter_guesses").innerHTML = missed_ltr;
-    console.log(word_arry);
-    console.log(guess_arry);
-    console.log(word_ltrs);
+    // console.log(word_arry);
+    // console.log(guess_arry);
+    // console.log(word_ltrs);
 }
+
+// check the the key that is pressed to see if it is a valid letter and then see if that is part of the word.
 
 function letter_check(){
     if(usr_keycode >= 65 && usr_keycode <= 90)
@@ -139,7 +144,7 @@ function letter_check(){
                 matches++;
                 word_ltrs--;
                 guess_arry[i] = usr_key_tst + "  ";
-                console.log(word_ltrs);
+                // console.log(word_ltrs);
             }
         }
         if (matches > 0)
@@ -150,11 +155,25 @@ function letter_check(){
         }
         else
         {
-            missed_guess++;
-            missed_ltr = missed_ltr + usr_key_tst + ", ";
-            document.getElementById("man").innerHTML = hangman_img[missed_guess];
-            document.getElementById("letter_guesses").innerHTML = missed_ltr;
-            game_chk();
+            var used = 0;
+            for (var i = 0; i < missed_ltr.length; i++){
+                if (usr_key_tst == missed_ltr[i])
+                {
+                    used++;
+                }
+            }
+            if (used > 0 )
+            {
+                document.getElementById("word_msg").innerHTML = "You already tried that letter already. Select one that is not a miss."
+            }
+            else
+            {
+                missed_guess++;
+                missed_ltr.push(usr_key_tst);
+                document.getElementById("man").innerHTML = hangman_img[missed_guess];
+                document.getElementById("letter_guesses").innerHTML = missed_ltr;
+                game_chk();
+            }
         }
     }
     else
@@ -166,6 +185,8 @@ function letter_check(){
 function match_ltr(){
     word_string = guess_arry.join("");
 }
+
+// check to see if the user has won or lost the game
 
 function game_chk(){
     if(missed_guess == 6){
